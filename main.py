@@ -31,7 +31,7 @@ template_id = os.environ["TEMPLATE_ID"]
 '''
 user_id_list = [
     {'user_id': 'osF4X6BWStR__0yh91O_pLH2TJl4',
-     'city': '071051'}
+     'city': '130600'}
 ]
 
 
