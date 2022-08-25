@@ -22,6 +22,13 @@ key = os.environ["KEY"]
 template_id = os.environ["TEMPLATE_ID"]
 
 # 用户列表 也可通过接口获取，但是接口获取的只有用户id没有用户昵称，不方便部分数据展示，如果有新增人员，对应添加一个user对象即可
+'''
+    user_id: 微信公众号的 openid
+       name: 昵称
+       date: 相识日期
+   birthday: 生日
+       city: 城市编码，api接口文档处查询
+'''
 user_id_list = [
     {'user_id': 'osF4X6BWStR__0yh91O_pLH2TJl4',
      'city': '071051'}
@@ -51,6 +58,8 @@ def get_weather(city):
     weather = res["lives"][0]
     return weather['weather'], weather['temperature'], weather['winddirection'], weather['province'] + weather[
         'city']
+
+
 # 发送消息 支持批量用户
 def send_message():
     for user in user_id_list:
