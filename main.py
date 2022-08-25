@@ -23,7 +23,7 @@ template_id = os.environ["TEMPLATE_ID"]
 
 # 用户列表 也可通过接口获取，但是接口获取的只有用户id没有用户昵称，不方便部分数据展示，如果有新增人员，对应添加一个user对象即可
 user_id_list = [
-    {'user_id': 'osF4X6BWStR__0yh91O_pLH2TJl4', "name": 'Regan',"birthday": "01-14",
+    {'user_id': 'osF4X6BWStR__0yh91O_pLH2TJl4',
      'city': '440300'}
 ]
 
@@ -52,25 +52,11 @@ def get_weather(city):
     return weather['weather'], weather['temperature'], weather['winddirection'], weather['province'] + weather[
         'city']
 
-
-# 计算生日天数
-def get_birthday(birthday):
-    print(birthday)
-    next = datetime.strptime(str(date.today().year) + "-" + birthday, "%Y-%m-%d")
-    if next < datetime.now():
-        next = next.replace(year=next.year + 1)
-    return (next - today).days
-
-
 # 发送消息 支持批量用户
 def send_message():
     for user in user_id_list:
         user_id = user.get('user_id')
-        name = user.get('name')
-        birthday = user.get('birthday')
-        start_date = user.get('date')
         city = user.get('city')
-        get_birthday(birthday)
         print(user_id)
 
         wea, temperature, winddirection, cityName = get_weather(city)
@@ -80,12 +66,10 @@ def send_message():
         wm = WeChatMessage(client)
 
         data = {
-            "name": {"value": name, "color": get_random_color()},
             "weather": {"value": wea, "color": get_random_color()},
             "temperature": {"value": temperature + "℃", "color": get_random_color()},
             "cityname": {"value": cityName, "color": get_random_color()},
             "winddirection": {"value": winddirection, "color": get_random_color()},
-            "birthday_left": {"value": get_birthday(birthday), "color": get_random_color()},
             "words": {"value": get_words(), "color": get_random_color()}
         }
         res = wm.send_template(user_id, template_id, data)
