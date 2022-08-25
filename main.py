@@ -24,7 +24,7 @@ template_id = os.environ["TEMPLATE_ID"]
 # 用户列表 也可通过接口获取，但是接口获取的只有用户id没有用户昵称，不方便部分数据展示，如果有新增人员，对应添加一个user对象即可
 user_id_list = [
     {'user_id': 'osF4X6BWStR__0yh91O_pLH2TJl4', "name": 'Regan',"birthday": "01-14",
-     'city': '440300'},
+     'city': '440300'}
 ]
 
 
@@ -51,12 +51,6 @@ def get_weather(city):
     weather = res["lives"][0]
     return weather['weather'], weather['temperature'], weather['winddirection'], weather['province'] + weather[
         'city']
-
-
-# 总天数
-def get_count(start_date):
-    delta = today - datetime.strptime(start_date, "%Y-%m-%d")
-    return delta.days
 
 
 # 计算生日天数
