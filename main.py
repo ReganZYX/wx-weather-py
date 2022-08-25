@@ -70,7 +70,6 @@ def send_message():
         birthday = user.get('birthday')
         start_date = user.get('date')
         city = user.get('city')
-        get_count(start_date)
         get_birthday(birthday)
         print(user_id)
 
