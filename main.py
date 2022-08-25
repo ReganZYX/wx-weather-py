@@ -85,7 +85,6 @@ def send_message():
             "temperature": {"value": temperature + "℃", "color": get_random_color()},
             "cityname": {"value": cityName, "color": get_random_color()},
             "winddirection": {"value": winddirection, "color": get_random_color()},
-            "love_days": {"value": get_count(start_date), "color": get_random_color()},
             "birthday_left": {"value": get_birthday(birthday), "color": get_random_color()},
             "words": {"value": get_words(), "color": get_random_color()}
         }
