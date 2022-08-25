@@ -49,8 +49,7 @@ def get_weather(city):
     res = requests.get(url).json()
     print(res)
     weather = res["lives"][0]
-    return weather['weather'], weather['temperature'], weather['winddirection'], weather['province'] + weather[
-        'city']
+    return weather['weather'], weather['temperature'], weather['winddirection'], weather['province'] + weather['city']
 
 # 发送消息 支持批量用户
 def send_message():
